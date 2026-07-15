@@ -1,0 +1,253 @@
+<style>
+  .allin-ai-landing {
+    --ai-bg: #07080b;
+    --ai-panel: #101217;
+    --ai-line: rgba(255, 255, 255, .11);
+    --ai-text: #f5f4f1;
+    --ai-muted: #9a9da5;
+    --ai-gold: #f1c96f;
+    --ai-gold-bright: #ffe3a8;
+    color: var(--ai-text);
+    overflow: hidden;
+    background: var(--ai-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  }
+
+  .allin-ai-landing * { box-sizing: border-box; }
+  .allin-ai-landing a { color: inherit; }
+  .ai-wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+  /* The host project supplies the page header. Keep this notice below it. */
+  .ai-marquee {
+    height: 42px;
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--ai-gold-bright);
+    background: rgba(225, 177, 70, .1);
+    border-top: 1px solid rgba(241, 201, 111, .2);
+    border-bottom: 1px solid rgba(241, 201, 111, .2);
+    font-size: 13px;
+    letter-spacing: .08em;
+  }
+
+  .ai-marquee__track {
+    display: inline-block;
+    min-width: 100%;
+    padding-left: 100%;
+    animation: ai-marquee-scroll 28s linear infinite;
+  }
+
+  .ai-hero {
+    position: relative;
+    min-height: 730px;
+    padding: 116px 0 92px;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 4% 36%, rgba(65, 87, 160, .18), transparent 22%),
+      radial-gradient(circle at 92% 20%, rgba(224, 171, 65, .16), transparent 25%);
+  }
+
+  .ai-hero::before {
+    position: absolute;
+    z-index: -1;
+    width: 680px;
+    height: 680px;
+    top: -400px;
+    right: -230px;
+    border: 1px solid rgba(241, 201, 111, .14);
+    border-radius: 50%;
+    box-shadow: 0 0 0 65px rgba(241, 201, 111, .018), 0 0 0 180px rgba(241, 201, 111, .012);
+    content: "";
+  }
+
+  .ai-hero-grid { display: grid; grid-template-columns: .84fr 1.16fr; gap: 48px; align-items: center; }
+  .ai-kicker { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; color: var(--ai-gold-bright); border: 1px solid rgba(241, 201, 111, .27); border-radius: 999px; background: rgba(241, 201, 111, .08); font-size: 12px; font-weight: 750; letter-spacing: .1em; }
+  .ai-kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--ai-gold); box-shadow: 0 0 0 4px rgba(241, 201, 111, .16); }
+  .ai-hero h1 { max-width: 590px; margin: 23px 0 20px; font-size: clamp(43px, 5.2vw, 72px); line-height: 1.08; letter-spacing: -.065em; }
+  .ai-hero h1 strong { color: var(--ai-gold-bright); font-weight: inherit; }
+  .ai-lead { max-width: 530px; margin: 0; color: var(--ai-muted); font-size: 17px; line-height: 1.85; }
+  .ai-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .ai-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 21px; border: 1px solid var(--ai-line); border-radius: 11px; background: rgba(255, 255, 255, .04); color: #f4f4f3; font-size: 14px; font-weight: 750; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+  .ai-button:hover { transform: translateY(-2px); }
+  .ai-button--gold { border-color: transparent; background: linear-gradient(135deg, #ffe6aa, #e6b75a); color: #19140b; box-shadow: 0 11px 30px rgba(224, 170, 57, .18); }
+  .ai-note { margin: 13px 0 0; color: #696d76; font-size: 12px; }
+
+  .ai-stage { position: relative; height: 460px; perspective: 1200px; }
+  .ai-stage::before { position: absolute; inset: 8% 10%; border-radius: 50%; background: rgba(230, 178, 64, .2); filter: blur(65px); content: ""; }
+  .ai-stage__grid { position: absolute; inset: 12% 4% -10%; opacity: .45; background-image: linear-gradient(rgba(241, 201, 111, .12) 1px, transparent 1px), linear-gradient(90deg, rgba(241, 201, 111, .12) 1px, transparent 1px); background-size: 32px 32px; transform: rotateX(60deg) rotateZ(-5deg); mask-image: linear-gradient(to bottom, #000, transparent 76%); }
+  .ai-slide { position: absolute; width: min(470px, 78%); top: 50%; left: 50%; overflow: hidden; border: 1px solid rgba(255, 255, 255, .23); border-radius: 18px; box-shadow: 0 30px 70px rgba(0, 0, 0, .52); transform-style: preserve-3d; }
+  .ai-slide img { display: block; width: 100%; height: auto; }
+  .ai-slide--one { z-index: 3; animation: ai-card-one 12s ease-in-out infinite; }
+  .ai-slide--two { z-index: 2; animation: ai-card-two 12s ease-in-out infinite; }
+  .ai-slide--three { z-index: 1; animation: ai-card-three 12s ease-in-out infinite; }
+  .ai-stage__caption { position: absolute; z-index: 4; right: 6%; bottom: 0; display: flex; align-items: center; gap: 8px; padding: 10px 13px; color: #dfdfdf; border: 1px solid rgba(255, 255, 255, .14); border-radius: 8px; background: rgba(8, 9, 12, .72); backdrop-filter: blur(10px); font-size: 12px; }
+  .ai-stage__caption b { color: var(--ai-gold); }
+
+  .ai-section { padding: 105px 0; }
+  .ai-section--panel { background: #0c0d11; border-top: 1px solid rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .06); }
+  .ai-section-head { display: flex; align-items: end; justify-content: space-between; gap: 34px; }
+  .ai-overline { margin: 0 0 12px; color: var(--ai-gold); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+  .ai-section h2 { margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.16; letter-spacing: -.055em; }
+  .ai-intro { max-width: 410px; margin: 0; color: var(--ai-muted); font-size: 15px; line-height: 1.8; }
+
+  .ai-rate-board { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; margin-top: 45px; }
+  .ai-rate-card { position: relative; overflow: hidden; min-height: 370px; padding: 31px; border: 1px solid var(--ai-line); border-radius: 18px; background: linear-gradient(145deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .018)); }
+  .ai-rate-card--vip { border-color: rgba(241, 201, 111, .46); background: linear-gradient(145deg, rgba(241, 201, 111, .13), rgba(241, 201, 111, .025) 55%, rgba(255, 255, 255, .035)); }
+  .ai-rate-card__tag { display: inline-block; padding: 5px 8px; border-radius: 5px; color: #afb1b6; background: rgba(255, 255, 255, .08); font-size: 11px; font-weight: 750; }
+  .ai-rate-card--vip .ai-rate-card__tag { color: #30240e; background: var(--ai-gold); }
+  .ai-rate-card h3 { margin: 19px 0 6px; font-size: 24px; letter-spacing: -.04em; }
+  .ai-rate-card__description { margin: 0; color: var(--ai-muted); font-size: 14px; line-height: 1.7; }
+  .ai-rate-list { display: grid; gap: 0; margin: 27px 0 0; border-top: 1px solid var(--ai-line); }
+  .ai-rate-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--ai-line); color: #c5c6c9; font-size: 14px; }
+  .ai-rate-row b { color: #fff; font-size: 18px; letter-spacing: -.03em; }
+  .ai-rate-card--vip .ai-rate-row b { color: var(--ai-gold-bright); }
+  .ai-rate-card__mark { position: absolute; right: 22px; bottom: -22px; color: rgba(255, 255, 255, .045); font-size: 110px; font-weight: 850; line-height: 1; letter-spacing: -.09em; }
+  .ai-rate-card--vip .ai-rate-card__mark { color: rgba(241, 201, 111, .1); }
+
+  .ai-confidence { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
+  .ai-confidence .ai-intro { max-width: 560px; margin-top: 17px; font-size: 16px; }
+  .ai-points { display: grid; gap: 14px; }
+  .ai-point { display: flex; gap: 14px; padding: 17px 0; border-bottom: 1px solid var(--ai-line); }
+  .ai-point__number { flex: 0 0 28px; color: var(--ai-gold); font-size: 12px; font-weight: 800; letter-spacing: .05em; }
+  .ai-point b { display: block; margin-bottom: 5px; font-size: 15px; }
+  .ai-point span { display: block; color: var(--ai-muted); font-size: 13px; line-height: 1.6; }
+
+  .ai-end { padding: 76px 0 92px; }
+  .ai-end__box { padding: 54px; text-align: center; border: 1px solid rgba(241, 201, 111, .32); border-radius: 21px; background: radial-gradient(circle at 50% -60%, rgba(241, 201, 111, .2), transparent 55%), #111114; }
+  .ai-end h2 { max-width: 670px; margin: 0 auto; }
+  .ai-end p { max-width: 560px; margin: 17px auto 0; color: var(--ai-muted); font-size: 15px; line-height: 1.8; }
+  .ai-end .ai-actions { justify-content: center; margin-top: 27px; }
+
+  @keyframes ai-marquee-scroll { to { transform: translateX(-100%); } }
+  @keyframes ai-card-one {
+    0%, 26% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) rotateX(7deg) rotateY(-9deg) rotateZ(-2deg) scale(1); }
+    33%, 93% { opacity: .24; filter: blur(4px); transform: translate(-72%, -42%) rotateX(8deg) rotateY(-17deg) rotateZ(-9deg) scale(.78); }
+    100% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) rotateX(7deg) rotateY(-9deg) rotateZ(-2deg) scale(1); }
+  }
+  @keyframes ai-card-two {
+    0%, 26% { opacity: .24; filter: blur(4px); transform: translate(-29%, -42%) rotateX(8deg) rotateY(17deg) rotateZ(9deg) scale(.78); }
+    33%, 60% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) rotateX(7deg) rotateY(-9deg) rotateZ(-2deg) scale(1); }
+    67%, 100% { opacity: .24; filter: blur(4px); transform: translate(-72%, -42%) rotateX(8deg) rotateY(-17deg) rotateZ(-9deg) scale(.78); }
+  }
+  @keyframes ai-card-three {
+    0%, 60% { opacity: .24; filter: blur(4px); transform: translate(-72%, -42%) rotateX(8deg) rotateY(-17deg) rotateZ(-9deg) scale(.78); }
+    67%, 93% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) rotateX(7deg) rotateY(-9deg) rotateZ(-2deg) scale(1); }
+    100% { opacity: .24; filter: blur(4px); transform: translate(-29%, -42%) rotateX(8deg) rotateY(17deg) rotateZ(9deg) scale(.78); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ai-marquee__track, .ai-slide { animation: none; }
+    .ai-slide--one { opacity: 1; filter: none; transform: translate(-50%, -50%); }
+    .ai-slide--two, .ai-slide--three { display: none; }
+  }
+  @media (max-width: 760px) {
+    .ai-wrap { width: min(100% - 32px, 560px); }
+    .ai-marquee { margin-top: 120px; font-size: 12px; }
+    .ai-hero { min-height: 0; padding: 75px 0 60px; }
+    .ai-hero-grid, .ai-confidence, .ai-rate-board { grid-template-columns: 1fr; }
+    .ai-hero-grid { gap: 35px; }
+    .ai-hero h1 { font-size: clamp(40px, 12vw, 57px); }
+    .ai-lead { font-size: 16px; }
+    .ai-stage { height: 330px; margin: 0 -16px; }
+    .ai-stage__caption { right: 8%; }
+    .ai-section, .ai-end { padding: 70px 0; }
+    .ai-section-head { display: block; }
+    .ai-section-head .ai-intro { margin-top: 16px; }
+    .ai-rate-board { margin-top: 31px; }
+    .ai-rate-card { min-height: 345px; }
+    .ai-confidence { gap: 34px; }
+    .ai-end__box { padding: 42px 20px; }
+  }
+</style>
+
+<div class="allin-ai-landing">
+  <!-- The surrounding project owns global header and footer. -->
+  <div class="ai-marquee" aria-label="限时活动公告">
+    <div class="ai-marquee__track">限时权益开放　·　VIP 用户享相关分组倍率折扣　·　普通用户也可享 Pro 0.15 / Plus 0.04 / Claude 1.2 低倍率　·　服务经得起测试　·　</div>
+  </div>
+
+  <section class="ai-hero">
+    <div class="ai-wrap ai-hero-grid">
+      <div>
+        <span class="ai-kicker"><i></i>LIMITED ACCESS</span>
+        <h1>好模型，<br><strong>不该有高使用门槛。</strong></h1>
+        <p class="ai-lead">All in AI 为不同使用需求提供更具竞争力的倍率。现在升级 VIP，可享相关分组专属折扣；即使暂不升级，Pro、Plus 与 Claude 也有低倍率限时开放。</p>
+        <div class="ai-actions">
+          <a class="ai-button ai-button--gold" href="#ai-rates">查看全部倍率</a>
+          <a class="ai-button" href="#ai-test">先来测试服务</a>
+        </div>
+        <p class="ai-note">限时活动以平台当前规则为准</p>
+      </div>
+
+      <div class="ai-stage" aria-label="号池服务示意轮播">
+        <div class="ai-stage__grid"></div>
+        <!-- Replace these local placeholder SVGs with real pool imagery when available. -->
+        <div class="ai-slide ai-slide--one"><img src="assets/pool-overview.svg" alt="号池概览占位图"></div>
+        <div class="ai-slide ai-slide--two"><img src="assets/pool-routing.svg" alt="智能路由占位图"></div>
+        <div class="ai-slide ai-slide--three"><img src="assets/pool-monitoring.svg" alt="实时监测占位图"></div>
+        <div class="ai-stage__caption"><b>LIVE POOL</b><span>资源池实时调度中</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-section ai-section--panel" id="ai-rates">
+    <div class="ai-wrap">
+      <div class="ai-section-head">
+        <div><p class="ai-overline">SIMPLE, CLEAR, COMPETITIVE</p><h2>所有倍率，一目了然。</h2></div>
+        <p class="ai-intro">高频使用可以选择 VIP，获得相关分组的进一步折扣；想直接开始，也有足够低的普通用户倍率。</p>
+      </div>
+      <div class="ai-rate-board">
+        <article class="ai-rate-card ai-rate-card--vip">
+          <span class="ai-rate-card__tag">高频使用推荐</span>
+          <h3>VIP 用户</h3>
+          <p class="ai-rate-card__description">升级 VIP，享受更低的相关分组倍率，适合持续、高频调用。</p>
+          <div class="ai-rate-list">
+            <div class="ai-rate-row"><span>Pro</span><b>0.12</b></div>
+            <div class="ai-rate-row"><span>Plus</span><b>0.028</b></div>
+            <div class="ai-rate-row"><span>Claude Max</span><b>0.9</b></div>
+          </div>
+          <span class="ai-rate-card__mark">VIP</span>
+        </article>
+        <article class="ai-rate-card">
+          <span class="ai-rate-card__tag">限时体验价</span>
+          <h3>普通用户</h3>
+          <p class="ai-rate-card__description">无需升级，也能以低倍率开始使用主流模型服务。</p>
+          <div class="ai-rate-list">
+            <div class="ai-rate-row"><span>Pro</span><b>0.15</b></div>
+            <div class="ai-rate-row"><span>Plus</span><b>0.04</b></div>
+            <div class="ai-rate-row"><span>Claude</span><b>1.2</b></div>
+          </div>
+          <span class="ai-rate-card__mark">OPEN</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-section" id="ai-test">
+    <div class="ai-wrap ai-confidence">
+      <div>
+        <p class="ai-overline">BUILT TO BE TESTED</p>
+        <h2>服务好不好，<br>用一次就知道。</h2>
+        <p class="ai-intro">我们不靠复杂的营销话术。模型体验、调用稳定性与响应效率，欢迎直接用真实需求测试。</p>
+      </div>
+      <div class="ai-points">
+        <div class="ai-point"><span class="ai-point__number">01</span><div><b>覆盖常用模型分组</b><span>Pro、Plus、Claude 等模型服务，按需选择即可开始。</span></div></div>
+        <div class="ai-point"><span class="ai-point__number">02</span><div><b>清晰的倍率规则</b><span>VIP 与普通用户权益直接展示，不必猜测实际使用成本。</span></div></div>
+        <div class="ai-point"><span class="ai-point__number">03</span><div><b>欢迎真实场景检验</b><span>把日常工作流交给服务本身，用结果判断是否值得长期使用。</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-end">
+    <div class="ai-wrap">
+      <div class="ai-end__box">
+        <p class="ai-overline">LIMITED OFFER</p>
+        <h2>先用低倍率体验，<br>需要更多时再升级。</h2>
+        <p>普通用户的限时低倍率已开放；高频用户可通过 VIP 获得相关分组的进一步优惠。</p>
+        <div class="ai-actions"><a class="ai-button ai-button--gold" href="#ai-rates">查看套餐权益</a></div>
+      </div>
+    </div>
+  </section>
+</div>

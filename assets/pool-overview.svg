@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="38" y1="29" x2="906" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#26304B"/><stop offset=".55" stop-color="#12182B"/><stop offset="1" stop-color="#111015"/></linearGradient>
+    <linearGradient id="glow" x1="246" y1="177" x2="710" y2="462" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE4A1"/><stop offset="1" stop-color="#C98132"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="45"/></filter>
+  </defs>
+  <rect width="960" height="600" rx="30" fill="url(#bg)"/>
+  <circle cx="760" cy="103" r="155" fill="#DDAA51" fill-opacity=".32" filter="url(#blur)"/>
+  <path d="M0 452C179 366 302 507 460 409C629 304 717 376 960 243V600H0V452Z" fill="#0A0E19" fill-opacity=".8"/>
+  <g stroke="#8197C6" stroke-opacity=".28"><path d="M75 92H885M75 180H885M75 268H885M75 356H885M75 444H885"/><path d="M125 54V500M275 54V500M425 54V500M575 54V500M725 54V500M875 54V500"/></g>
+  <rect x="72" y="69" width="816" height="437" rx="18" fill="#080C17" fill-opacity=".72" stroke="#D5E2FF" stroke-opacity=".2"/>
+  <text x="112" y="119" fill="#C4CCDD" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">POOL OVERVIEW</text>
+  <circle cx="128" cy="163" r="6" fill="#72E4A4"/><text x="146" y="169" fill="#8F9AAF" font-family="Arial, sans-serif" font-size="14">NODES ONLINE</text><text x="113" y="239" fill="#F6F4ED" font-family="Arial, sans-serif" font-size="58" font-weight="700">248</text>
+  <path d="M112 415C165 383 185 431 233 392C286 349 319 402 368 341C415 283 453 371 502 301C545 241 589 306 638 233C695 149 735 236 784 173" stroke="url(#glow)" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#FFE2A0"><circle cx="233" cy="392" r="7"/><circle cx="368" cy="341" r="7"/><circle cx="502" cy="301" r="7"/><circle cx="638" cy="233" r="7"/><circle cx="784" cy="173" r="7"/></g>
+  <rect x="630" y="361" width="210" height="91" rx="12" fill="#F8C867" fill-opacity=".12" stroke="#F8C867" stroke-opacity=".38"/><text x="657" y="396" fill="#C7CFDF" font-family="Arial, sans-serif" font-size="13">ROUTE STATUS</text><text x="657" y="429" fill="#FFE4A1" font-family="Arial, sans-serif" font-size="21" font-weight="700">OPTIMIZED</text>
+</svg>

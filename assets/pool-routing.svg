@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <defs><linearGradient id="bg" x1="12" y1="0" x2="910" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="#192D39"/><stop offset=".52" stop-color="#101923"/><stop offset="1" stop-color="#151015"/></linearGradient><radialGradient id="orb"><stop stop-color="#D3F6DF"/><stop offset=".34" stop-color="#54C88F" stop-opacity=".72"/><stop offset="1" stop-color="#54C88F" stop-opacity="0"/></radialGradient><filter id="blur"><feGaussianBlur stdDeviation="28"/></filter></defs>
+  <rect width="960" height="600" rx="30" fill="url(#bg)"/><circle cx="510" cy="291" r="252" fill="url(#orb)" opacity=".4" filter="url(#blur)"/>
+  <rect x="68" y="65" width="824" height="470" rx="21" fill="#09120F" fill-opacity=".72" stroke="#C7F3D7" stroke-opacity=".18"/>
+  <text x="108" y="116" fill="#C4D5D2" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">SMART ROUTING</text>
+  <g stroke="#7EE4AD" stroke-opacity=".45" stroke-width="2"><path d="M249 206L478 299L711 183M249 206L354 430L478 299L711 405M478 299L354 430"/><path d="M249 206L711 405" stroke-opacity=".16"/></g>
+  <g fill="#0E2820" stroke="#A3F0C2" stroke-width="2"><circle cx="249" cy="206" r="50"/><circle cx="711" cy="183" r="50"/><circle cx="711" cy="405" r="50"/><circle cx="354" cy="430" r="50"/></g>
+  <circle cx="478" cy="299" r="84" fill="#143B2C" stroke="#E0F8B3" stroke-width="3"/><circle cx="478" cy="299" r="55" fill="#61D498" fill-opacity=".15"/><text x="439" y="293" fill="#F0FBEF" font-family="Arial, sans-serif" font-size="15">AI ROUTER</text><text x="450" y="319" fill="#92DDB3" font-family="Arial, sans-serif" font-size="12">BALANCED</text>
+  <g fill="#C9ECD6" font-family="Arial, sans-serif" font-size="14" text-anchor="middle"><text x="249" y="211">PRO</text><text x="711" y="188">PLUS</text><text x="711" y="410">CLAUDE</text><text x="354" y="435">MAX</text></g>
+  <path d="M108 488H852" stroke="#A3F0C2" stroke-opacity=".16"/><text x="108" y="471" fill="#8AA89A" font-family="Arial, sans-serif" font-size="13">AUTOMATIC PATH SELECTION / POOL READY</text>
+</svg>
