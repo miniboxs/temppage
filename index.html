@@ -74,6 +74,11 @@
   .ai-button:hover { transform: translateY(-2px); }
   .ai-button--gold { border-color: transparent; background: linear-gradient(135deg, #ffe6aa, #e6b75a); color: #19140b; box-shadow: 0 11px 30px rgba(224, 170, 57, .18); }
   .ai-note { margin: 13px 0 0; color: #696d76; font-size: 12px; }
+  .ai-topup { display: flex; align-items: center; gap: 16px; max-width: 515px; margin-top: 27px; padding: 14px 16px; border: 1px solid rgba(241, 201, 111, .35); border-radius: 12px; background: linear-gradient(105deg, rgba(241, 201, 111, .16), rgba(241, 201, 111, .035)); }
+  .ai-topup__symbol { flex: 0 0 41px; display: grid; width: 41px; height: 41px; place-items: center; border-radius: 10px; color: #241b0d; background: var(--ai-gold); font-size: 20px; font-weight: 850; }
+  .ai-topup__label { display: block; color: var(--ai-gold); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+  .ai-topup strong { display: block; margin-top: 2px; color: #fff8e9; font-size: 21px; letter-spacing: -.035em; }
+  .ai-topup small { display: block; margin-top: 3px; color: #ddd1b7; font-size: 13px; line-height: 1.45; }
 
   .ai-stage { position: relative; height: 460px; perspective: 1200px; }
   .ai-stage::before { position: absolute; inset: 8% 10%; border-radius: 50%; background: rgba(230, 178, 64, .2); filter: blur(65px); content: ""; }
@@ -150,6 +155,7 @@
     .ai-hero-grid { gap: 35px; }
     .ai-hero h1 { font-size: clamp(40px, 12vw, 57px); }
     .ai-lead { font-size: 16px; }
+    .ai-topup { align-items: flex-start; }
     .ai-stage { height: 330px; margin: 0 -16px; }
     .ai-stage__caption { right: 8%; }
     .ai-section, .ai-end { padding: 70px 0; }
@@ -171,9 +177,17 @@
   <section class="ai-hero">
     <div class="ai-wrap ai-hero-grid">
       <div>
-        <span class="ai-kicker"><i></i>LIMITED ACCESS</span>
+        <span class="ai-kicker"><i></i>LIMITED ACCESS · 限时开放</span>
         <h1>好模型，<br><strong>不该有高使用门槛。</strong></h1>
         <p class="ai-lead">All in AI 为不同使用需求提供更具竞争力的倍率。现在升级 VIP，可享相关分组专属折扣；即使暂不升级，Pro、Plus 与 Claude 也有低倍率限时开放。</p>
+        <div class="ai-topup" aria-label="充值比例：1 CNY 等于 1 USD">
+          <span class="ai-topup__symbol">$</span>
+          <div>
+            <span class="ai-topup__label">TOP-UP VALUE · 充值优势</span>
+            <strong>1 CNY = 1 USD</strong>
+            <small>充值 1 CNY，即到账 1 USD 额度。Clear value for every top-up.</small>
+          </div>
+        </div>
         <div class="ai-actions">
           <a class="ai-button ai-button--gold" href="/pricing">查看全部倍率</a>
           <a class="ai-button" href="/sign-up">先来测试服务</a>
@@ -206,7 +220,7 @@
           <div class="ai-rate-list">
             <div class="ai-rate-row"><span>Pro</span><b>0.12</b></div>
             <div class="ai-rate-row"><span>Plus</span><b>0.028</b></div>
-            <div class="ai-rate-row"><span>Claude Max</span><b>0.9</b></div>
+            <div class="ai-rate-row"><span>Claude Max</span><b>1.0</b></div>
           </div>
           <span class="ai-rate-card__mark">VIP</span>
         </article>
