@@ -91,6 +91,39 @@
   .ai-stage__caption { position: absolute; z-index: 4; right: 6%; bottom: 0; display: flex; align-items: center; gap: 8px; padding: 10px 13px; color: #dfdfdf; border: 1px solid rgba(255, 255, 255, .14); border-radius: 8px; background: rgba(8, 9, 12, .72); backdrop-filter: blur(10px); font-size: 12px; }
   .ai-stage__caption b { color: var(--ai-gold); }
 
+  .ai-network { padding: 92px 0; border-top: 1px solid rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .06); background: radial-gradient(circle at 84% 46%, rgba(70, 94, 180, .15), transparent 27%), #0a0c11; }
+  .ai-network__grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 55px; align-items: center; }
+  .ai-network h2 { margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.16; letter-spacing: -.055em; }
+  .ai-network__intro { max-width: 450px; margin: 17px 0 0; color: var(--ai-muted); font-size: 15px; line-height: 1.8; }
+  .ai-route-list { display: grid; gap: 12px; margin-top: 28px; }
+  .ai-route { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 13px; padding: 14px 15px; border: 1px solid var(--ai-line); border-radius: 12px; background: rgba(255, 255, 255, .035); text-decoration: none; transition: border-color .2s ease, transform .2s ease, background .2s ease; }
+  .ai-route:hover { border-color: rgba(241, 201, 111, .45); background: rgba(241, 201, 111, .07); transform: translateX(3px); }
+  .ai-route__icon { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(241, 201, 111, .35); border-radius: 10px; color: var(--ai-gold); font-size: 15px; }
+  .ai-route__meta { display: block; color: #8e929b; font-size: 10px; font-weight: 750; letter-spacing: .1em; }
+  .ai-route__domain { display: block; margin-top: 3px; color: #f4f4f2; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 14px; font-weight: 650; }
+  .ai-route__status { display: inline-flex; align-items: center; gap: 6px; color: #afdfbc; font-size: 11px; font-weight: 750; }
+  .ai-route__status::before { width: 6px; height: 6px; border-radius: 50%; background: #75d391; box-shadow: 0 0 0 4px rgba(117, 211, 145, .1); content: ""; }
+
+  .ai-map { position: relative; min-height: 386px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .11); border-radius: 20px; background: linear-gradient(145deg, rgba(48, 59, 104, .32), rgba(11, 13, 20, .88) 68%); }
+  .ai-map::before { position: absolute; width: 270px; height: 270px; top: 56px; left: 50%; border: 1px solid rgba(160, 189, 255, .17); border-radius: 50%; box-shadow: 0 0 0 42px rgba(121, 151, 226, .025), 0 0 80px rgba(79, 112, 214, .18); transform: translateX(-50%); content: ""; }
+  .ai-map__svg { position: absolute; inset: 8px 0 0; width: 100%; height: 330px; }
+  .ai-map__globe { fill: rgba(19, 30, 55, .7); stroke: rgba(198, 217, 255, .42); stroke-width: 1.2; }
+  .ai-map__latitude, .ai-map__longitude { fill: none; stroke: rgba(171, 196, 249, .16); stroke-width: .8; }
+  .ai-map__route { fill: none; stroke: #f1c96f; stroke-width: 1.7; stroke-linecap: round; stroke-dasharray: 5 8; animation: ai-route-flow 2.6s linear infinite; }
+  .ai-map__route--blue { stroke: #86a7ff; animation-delay: -1.4s; }
+  .ai-map__node, .ai-map__node--blue { stroke-width: 7; }
+  .ai-map__node { fill: #f9d985; stroke: rgba(255, 239, 187, .34); }
+  .ai-map__node--blue { fill: #9ab5ff; stroke: rgba(154, 181, 255, .24); }
+  .ai-map__title { position: absolute; top: 20px; left: 22px; color: #c9cbd2; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+  .ai-map__live { position: absolute; top: 19px; right: 20px; display: flex; align-items: center; gap: 7px; color: #a9d8b2; font-size: 11px; font-weight: 750; }
+  .ai-map__live::before { width: 6px; height: 6px; border-radius: 50%; background: #75d391; box-shadow: 0 0 0 4px rgba(117, 211, 145, .1); content: ""; }
+  .ai-map__regions { position: absolute; right: 18px; bottom: 18px; left: 18px; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(255, 255, 255, .09); border-radius: 10px; overflow: hidden; background: rgba(6, 8, 12, .68); backdrop-filter: blur(8px); }
+  .ai-region { min-width: 0; padding: 11px 12px; border-right: 1px solid rgba(255, 255, 255, .09); }
+  .ai-region:last-child { border-right: 0; }
+  .ai-region span { display: block; color: #e5e5e5; font-size: 11px; font-weight: 750; }
+  .ai-region small { display: block; margin-top: 4px; color: #838791; font-size: 10px; }
+  .ai-network__note { margin: 15px 0 0; color: #6d717b; font-size: 12px; }
+
   .ai-section { padding: 105px 0; }
   .ai-section--panel { background: #0c0d11; border-top: 1px solid rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .06); }
   .ai-section-head { display: flex; align-items: end; justify-content: space-between; gap: 34px; }
@@ -127,6 +160,7 @@
   .ai-end .ai-actions { justify-content: center; margin-top: 27px; }
 
   @keyframes ai-marquee-scroll { to { transform: translateX(-100%); } }
+  @keyframes ai-route-flow { to { stroke-dashoffset: -52; } }
   @keyframes ai-card-one {
     0%, 26% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) rotateX(7deg) rotateY(-9deg) rotateZ(-2deg) scale(1); }
     33%, 93% { opacity: .24; filter: blur(4px); transform: translate(-72%, -42%) rotateX(8deg) rotateY(-17deg) rotateZ(-9deg) scale(.78); }
@@ -143,7 +177,7 @@
     100% { opacity: .24; filter: blur(4px); transform: translate(-29%, -42%) rotateX(8deg) rotateY(17deg) rotateZ(9deg) scale(.78); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ai-marquee__track, .ai-slide { animation: none; }
+    .ai-marquee__track, .ai-slide, .ai-map__route { animation: none; }
     .ai-slide--one { opacity: 1; filter: none; transform: translate(-50%, -50%); }
     .ai-slide--two, .ai-slide--three { display: none; }
   }
@@ -151,13 +185,20 @@
     .ai-wrap { width: min(100% - 32px, 560px); }
     .ai-marquee { margin-top: 120px; font-size: 12px; }
     .ai-hero { min-height: 0; padding: 75px 0 60px; }
-    .ai-hero-grid, .ai-confidence, .ai-rate-board { grid-template-columns: 1fr; }
+    .ai-hero-grid, .ai-network__grid, .ai-confidence, .ai-rate-board { grid-template-columns: 1fr; }
     .ai-hero-grid { gap: 35px; }
     .ai-hero h1 { font-size: clamp(40px, 12vw, 57px); }
     .ai-lead { font-size: 16px; }
     .ai-topup { align-items: flex-start; }
     .ai-stage { height: 330px; margin: 0 -16px; }
     .ai-stage__caption { right: 8%; }
+    .ai-network { padding: 70px 0; }
+    .ai-network__grid { gap: 35px; }
+    .ai-map { min-height: 340px; }
+    .ai-map__svg { height: 290px; }
+    .ai-map::before { top: 42px; width: 230px; height: 230px; }
+    .ai-region { padding: 10px 8px; }
+    .ai-region small { font-size: 9px; }
     .ai-section, .ai-end { padding: 70px 0; }
     .ai-section-head { display: block; }
     .ai-section-head .ai-intro { margin-top: 16px; }
@@ -235,6 +276,55 @@
           </div>
           <span class="ai-rate-card__mark">OPEN</span>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-network" id="ai-network">
+    <div class="ai-wrap ai-network__grid">
+      <div>
+        <p class="ai-overline">GLOBAL ROUTING · 全球线路</p>
+        <h2>从更近的线路，<br>获得更快的响应。</h2>
+        <p class="ai-network__intro">面向不同地区的访问需求，我们提供国际线路与亚太优化线路。系统根据网络位置智能选择更合适的访问路径，让每次调用更顺畅。</p>
+        <div class="ai-route-list">
+          <a class="ai-route" href="https://oai2api.com" target="_blank" rel="noopener noreferrer">
+            <span class="ai-route__icon">◎</span>
+            <span><span class="ai-route__meta">GLOBAL ROUTE · 国际线路</span><span class="ai-route__domain">oai2api.com</span></span>
+            <span class="ai-route__status">ACTIVE</span>
+          </a>
+          <a class="ai-route" href="https://asia.oai2api.com" target="_blank" rel="noopener noreferrer">
+            <span class="ai-route__icon">◉</span>
+            <span><span class="ai-route__meta">APAC OPTIMIZED · 亚太优化</span><span class="ai-route__domain">asia.oai2api.com</span></span>
+            <span class="ai-route__status">ACTIVE</span>
+          </a>
+        </div>
+        <p class="ai-network__note">线路选择与实际网络质量会因地区、运营商和实时网络状况而变化。</p>
+      </div>
+
+      <div class="ai-map" aria-label="全球智能路由示意图">
+        <span class="ai-map__title">LIVE ROUTE MAP</span>
+        <span class="ai-map__live">ROUTING ACTIVE</span>
+        <svg class="ai-map__svg" viewBox="0 0 560 340" role="img" aria-label="北美、欧洲与亚太地区路由连接">
+          <ellipse class="ai-map__globe" cx="280" cy="172" rx="137" ry="124"/>
+          <ellipse class="ai-map__latitude" cx="280" cy="172" rx="137" ry="42"/>
+          <ellipse class="ai-map__latitude" cx="280" cy="172" rx="137" ry="83"/>
+          <ellipse class="ai-map__longitude" cx="280" cy="172" rx="48" ry="124"/>
+          <ellipse class="ai-map__longitude" cx="280" cy="172" rx="94" ry="124"/>
+          <path class="ai-map__route" d="M180 147 Q278 53 387 130"/>
+          <path class="ai-map__route ai-map__route--blue" d="M180 147 Q262 296 401 209"/>
+          <path class="ai-map__route" d="M387 130 Q443 164 401 209"/>
+          <circle class="ai-map__node--blue" cx="180" cy="147" r="6"/>
+          <circle class="ai-map__node" cx="387" cy="130" r="6"/>
+          <circle class="ai-map__node" cx="401" cy="209" r="6"/>
+          <text x="151" y="128" fill="#B9CCFF" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.2">NORTH AMERICA</text>
+          <text x="356" y="111" fill="#F4D789" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.2">EUROPE</text>
+          <text x="373" y="236" fill="#F4D789" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.2">APAC</text>
+        </svg>
+        <div class="ai-map__regions">
+          <div class="ai-region"><span>North America</span><small>Global route</small></div>
+          <div class="ai-region"><span>Europe</span><small>Global route</small></div>
+          <div class="ai-region"><span>Asia Pacific</span><small>APAC optimized</small></div>
+        </div>
       </div>
     </div>
   </section>
